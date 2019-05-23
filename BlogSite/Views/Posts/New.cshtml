@@ -33,8 +33,10 @@
             <textarea class= "k-textbox" style="width:100%; height: 148px;" required id="content" name="content" type="text" ></textarea><br>
           </div>
           <br>
-          <label for="file">Upload an image:</label>
-            <input type="file" name="file" />
+          <asp:FileUpLoad id="FileUpLoad1" runat="server" /> 
+          <asp:Button id="UploadBtn" Text="Upload File" OnClick="UploadBtn_Click" runat="server" Width="105px" />
+          <!-- <label for="file">Upload an image:</label>
+            <input type="file" name="file" /> -->
             <br>
           <div>
           <button type="submit" >Save</button>
