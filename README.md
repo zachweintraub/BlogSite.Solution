@@ -6,7 +6,7 @@
 
 ## Description
 
-_This application allows users to register with username and password, add blog, add posts to the blog, add communities to their blog, tomake a search in posts._
+_This application allows users to register with username and password, add blog, add posts to the blog, add communities to their blog, to make a search in posts._
 
 ## Blog Site Specifications
 
