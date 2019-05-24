@@ -1,5 +1,12 @@
 @using BlogSite.Models;
 @using System.Collections.Generic;
+@using System;
+@using MySql.Data.MySqlClient;
+@using System.Web;
+@using System.IO;
+@using System.Threading.Tasks;
+@using Microsoft.AspNetCore.Hosting;
+@using Microsoft.AspNetCore.Http;
 @{Layout = "_Layout";}
 @Html.Partial("Header")
 
@@ -33,10 +40,8 @@
             <textarea class= "k-textbox" style="width:100%; height: 148px;" required id="content" name="content" type="text" ></textarea><br>
           </div>
           <br>
-          <asp:FileUpLoad id="FileUpLoad1" runat="server" /> 
-          <asp:Button id="UploadBtn" Text="Upload File" OnClick="UploadBtn_Click" runat="server" Width="105px" />
-          <!-- <label for="file">Upload an image:</label>
-            <input type="file" name="file" /> -->
+          <label for="file">Upload an image:</label>
+            <input style="width:750px; height:100%;" type="file" name="file">
             <br>
           <div>
           <button type="submit" >Save</button>

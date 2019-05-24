@@ -40,26 +40,50 @@ namespace BlogSite.Controllers
       }
 
 
+
       [HttpPost("/blogs/{id}/posts/new")]
-      public ActionResult Create(string title, string content, IFormFile file, int id)
+      public async Task <ActionResult> Create(string title, string content, IFormFile file, int id)
       {
         string imgName = null;
         if (file != null) 
         {
-          imgName = "1.jpg";
+          long size = file.Length;
+          if (file.Length > 0)
+          {
+          // 1. Find path where to store image 
+          var fileName = DateTime.Now.Ticks + file.FileName;
+          var filePath = Directory.GetCurrentDirectory() + "/wwwroot/uploads/" + fileName;
+          // 2. Write image to file
+              using (var stream = new FileStream(filePath, FileMode.Create))
+              {
+                  await file.CopyToAsync(stream);
+              }
+              imgName = fileName;
+          }
         }
         Post myPost = new Post(title, content, imgName, id);
         myPost.Save();
         return RedirectToAction("Show", new{blogId = myPost.GetBlogId(), postId = myPost.GetId()});
       }
 
+
       [HttpPost("/blogs/{blogId}/posts/{postId}/update")]
-      public ActionResult Update(int blogId, int postId, string title, string content, IFormFile file)
+      public async Task <ActionResult> Update(int blogId, int postId, string title, string content, IFormFile file)
       {
         string imgName = null;
         if (file != null) 
         {
-          imgName = "1.jpg";
+          long size = file.Length;
+          if (file.Length > 0)
+          {
+          var fileName = DateTime.Now.Ticks + file.FileName;
+          var filePath = Directory.GetCurrentDirectory() + "/wwwroot/uploads/" + fileName;
+              using (var stream = new FileStream(filePath, FileMode.Create))
+              {
+                  await file.CopyToAsync(stream);
+              }
+              imgName = fileName;
+          }
         }
         Post editPost = Post.Find(postId);
         editPost.Edit(title, content, imgName);
