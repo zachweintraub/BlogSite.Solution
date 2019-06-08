@@ -143,9 +143,9 @@ namespace BlogSite.Models
         _id = (int) cmd.LastInsertedId;
         conn.Close();
         if (conn != null)
-            {
-                conn.Dispose();
-            }
+        {
+            conn.Dispose();
+        }
 
     }
 
@@ -272,6 +272,11 @@ namespace BlogSite.Models
                 conn.Dispose();
             }
         }
+
+        // public List<Comment> GetComments()
+        // {
+
+        // }
 
 
         public static List<Post> PostSearch(string searchWord)
