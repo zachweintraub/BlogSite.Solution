@@ -41,13 +41,10 @@
             <br>
             }
           @if(Model.GetPosts().Count < 1)
-
-
           {
               <h3>There are no posts to display.</h3>
           }
           else
-
           {
               @foreach(Post post in Model.GetPosts())
               {
@@ -55,6 +52,7 @@
                   <h3>@post.GetTitle()</h3>
                   <p>Posted by @Model.GetUsername() on @post.GetDate().ToString("MM-dd-yyyy")</p>
                   <p>@post.GetContentPreview()</p>
+                  <p>@post.GetComments().Count Comments</p>
                   <a href="/blogs/@Model.GetId()/posts/@post.GetId()">Read more...</a>
                   <br>
 

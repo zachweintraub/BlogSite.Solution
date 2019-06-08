@@ -42,3 +42,38 @@
     </div>
   </div>
 </div>
+
+<div class="row">
+  <div class="col span-1-of-3 box">
+    <div class="form-box-post">
+    <div class="post-icon">
+      <ion-icon name="sunny"></ion-icon>
+    </div>
+    
+    <h2>Comments</h2><br>
+
+    @if(Model.GetComments().Count < 1)
+    {
+      <p>There are no comments...yet!</p>
+    }
+    else
+    {
+      @foreach(Comment comment in Model.GetComments())
+      {
+        <div class="comment">
+          <p>@comment.GetContent()</p>
+          <p>Posted by <a href="/blogs/@comment.GetAuthorId()">@Blog.FindById(comment.GetAuthorId()).GetUsername()</a> on @comment.GetTimestamp()</p>
+        </div>
+      }
+    }
+    <div class="new-comment">
+      <form id="comment-form" method="post" action="/blogs/@Model.GetBlogId()/posts/@Model.GetId()/comments/new">
+        <input name="commentContent" type="text" maxlength="500">
+        <input name="commenterId" hidden value=@SessionBlog.GetId()>
+        <button type="submit">
+      </form>
+    </div>
+
+    </div>
+  </div>
+</div>

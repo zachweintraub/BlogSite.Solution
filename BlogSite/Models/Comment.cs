@@ -33,6 +33,11 @@ namespace BlogSite.Models
         return _timestamp;
     }
 
+    public void SetTimestamp(DateTime timestamp)
+    {
+        _timestamp = timestamp;
+    }
+
     public Comment(int postId, int authorId, string content, int id=0)
     {
         _postId = postId;
@@ -64,6 +69,11 @@ namespace BlogSite.Models
         timestamp.ParameterName = "@timestamp";
         timestamp.Value = this._timestamp;
         cmd.Parameters.Add(timestamp);
+
+        MySqlParameter thisContent = new MySqlParameter();
+        thisContent.ParameterName = "@content";
+        thisContent.Value = this._content;
+        cmd.Parameters.Add(thisContent);
 
         cmd.ExecuteNonQuery();
         _id = (int) cmd.LastInsertedId;
