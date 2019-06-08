@@ -66,14 +66,16 @@
         </div>
       }
     }
-    <div class="new-comment">
-      <form id="comment-form" method="post" action="/blogs/@Model.GetBlogId()/posts/@Model.GetId()/comments/new">
-        <input name="commentContent" type="text" maxlength="500">
-        <input name="commenterId" hidden value=@SessionBlog.GetId()>
-        <button type="submit">
-      </form>
-    </div>
-
+    @if(@SessionBlog.GetId() > 0)
+    {
+      <div class="new-comment">
+        <form id="comment-form" method="post" action="/blogs/@Model.GetBlogId()/posts/@Model.GetId()/comments/new">
+          <input name="commentContent" type="text" maxlength="500">
+          <input name="commenterId" hidden value=@SessionBlog.GetId()>
+          <button type="submit">
+        </form>
+      </div>
+    }
     </div>
   </div>
 </div>
