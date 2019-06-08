@@ -16,7 +16,7 @@
     </div>
     @if (Model.GetFile() != null )
     {
-        <img src='/uploads/@Model.GetFile()'/>
+        <img style="height: 550px; width: 750px; object-fit: scale-down;" src='/uploads/@Model.GetFile()'/>
     }
     <div>
       <p>@Model.GetContent()</p>

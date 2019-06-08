@@ -1,5 +1,12 @@
 @using BlogSite.Models;
 @using System.Collections.Generic;
+@using System;
+@using MySql.Data.MySqlClient;
+@using System.Web;
+@using System.IO;
+@using System.Threading.Tasks;
+@using Microsoft.AspNetCore.Hosting;
+@using Microsoft.AspNetCore.Http;
 @{Layout = "_Layout";}
 @Html.Partial("Header")
 
@@ -34,7 +41,7 @@
           </div>
           <br>
           <label for="file">Upload an image:</label>
-            <input type="file" name="file" />
+            <input type="file" name="file">
             <br>
           <div>
           <button type="submit" >Save</button>
