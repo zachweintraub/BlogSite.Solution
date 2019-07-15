@@ -11,8 +11,8 @@ services:
   
   app:
     depends_on:
-      - hairsalondb
-    image: hairsalon
+      - blog_sitedb
+    image: blog_site
     build:
       context: .
     ports:
