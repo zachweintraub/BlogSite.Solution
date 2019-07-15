@@ -1,0 +1,19 @@
+version: '3.0'
+
+services:
+  blog_sitedb:
+    image: mysql:5.7.26
+    environment:
+      MYSQL_ROOT_PASSWORD: blog_sitedbpw
+      MYSQL_DATABASE: blog_site
+    volumes:
+       - ./_MySQL_Init_Script:/docker-entrypoint-initdb.d
+  
+  app:
+    depends_on:
+      - hairsalondb
+    image: hairsalon
+    build:
+      context: .
+    ports:
+      - '8080:80'
