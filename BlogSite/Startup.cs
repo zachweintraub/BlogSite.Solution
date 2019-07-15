@@ -44,7 +44,7 @@ namespace BlogSite
 
   public static class DBConfiguration
   {
-    public static string ConnectionString = "server=localhost;user id=blogsitedb;password=blogsitepw;port=8889;database=blog_site;";
+    public static string ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=blog_site;";
   }
 
 }
